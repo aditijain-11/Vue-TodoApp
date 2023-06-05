@@ -1,12 +1,34 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { uid } from "uid";
-import { ref } from "vue";
+import { ref,watch } from "vue";
 import TodoCreator from "../components/TodoCreator.vue";
 import TodoItem from "../components/TodoItem.vue";
 import TodoButton from "../components/TodoButton.vue";
 
 const todoList = ref([]);
+
+watch(todoList, ()=>{
+  setTodoListLocalStorage();
+},
+{
+  deep: true,
+}
+);
+
+const fetchTodoList = () => {
+  const savedTodoList = JSON.parse(localStorage.getItem("todoList"))
+  if (savedTodoList){
+    todoList.value = savedTodoList;
+  }
+};
+
+fetchTodoList();
+
+const setTodoListLocalStorage = () => {
+  localStorage.setItem("todoList", JSON.stringify(todoList.value))
+};
+
 const createTodo = (todo) => {
   todoList.value.push({
     id: uid(),
@@ -14,24 +36,29 @@ const createTodo = (todo) => {
     isCompleted: false,
     isEditing: null,
   });
-};
-
-const toggleEditTodo = (todoPos) => {
-  todoList.value[todoPos].isEditing = !todoList.value[todoPos].isEditing;
-};
-
-const updateTodo = (todoVal, todoPos) => {
-  todoList.value[todoPos].todo = todoVal;
+  // setTodoListLocalStorage();
 };
 
 const toggleTodoComplete = (todoPos) => {
   todoList.value[todoPos].isCompleted = !todoList.value[todoPos].isCompleted;
+  // setTodoListLocalStorage();
+};
+
+const toggleEditTodo = (todoPos) => {
+  todoList.value[todoPos].isEditing = !todoList.value[todoPos].isEditing;
+  // setTodoListLocalStorage();
+};
+
+const updateTodo = (todoVal, todoPos) => {
+  todoList.value[todoPos].todo = todoVal;
+  // setTodoListLocalStorage();
 };
 
 const deleteTodo = (todo) => {
   todoList.value = todoList.value.filter(
     (todoFilter) => todoFilter.id !== todo.id
   );
+  // setTodoListLocalStorage();
 };
 </script>
 
