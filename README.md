@@ -27,3 +27,15 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## ScreenShots
+
+![image](https://github.com/aditijain-11/Vue-TodoApp/assets/68831624/8f88aea3-dd92-490e-8a99-8d8c75d0e281)
+
+
+![image](https://github.com/aditijain-11/Vue-TodoApp/assets/68831624/da23a5c6-4960-4b8a-b43d-a9a3c8c1e69f)
+
+
+## Next Step
+
+Deploying on Netlify
