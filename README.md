@@ -38,7 +38,7 @@ npm run build
 ![image](https://github.com/aditijain-11/Vue-TodoApp/assets/68831624/db82f408-2b23-4dd9-a820-22b48da66710)
 
 
+## Deployed on Netlify
 
-## Next Step
+Find the deployed site @ https://main--dreamy-sopapillas-c2d180.netlify.app/
 
-Deploying on Netlify
